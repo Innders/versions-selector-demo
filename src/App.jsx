@@ -1,3 +1,4 @@
+import "@ynput/ayon-react-components/dist/style.css";
 import { Button } from "@ynput/ayon-react-components";
 
 function App() {
