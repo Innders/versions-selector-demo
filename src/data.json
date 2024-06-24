@@ -1,17 +1,12 @@
 [
   {
-    "id": 1,
-    "version": "001",
-    "approved": false
-  },
-  {
     "id": 2,
     "version": "002",
     "approved": false
   },
   {
-    "id": 3,
-    "version": "003",
+    "id": 1,
+    "version": "001",
     "approved": false
   },
   {
@@ -23,6 +18,11 @@
     "id": 5,
     "version": "005",
     "approved": true
+  },
+  {
+    "id": 3,
+    "version": "003",
+    "approved": false
   },
   {
     "id": 6,
