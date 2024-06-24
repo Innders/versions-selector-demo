@@ -9,3 +9,8 @@ export const Versions = styled.div`
 `;
 
 export const VersionImg = styled.img``;
+
+export const VersionsToolbar = styled.div`
+  display: flex;
+  gap: 4px;
+`;

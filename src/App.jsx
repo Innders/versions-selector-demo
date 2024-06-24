@@ -4,17 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   closeVersionsSelector,
   openVersionsSelector,
+  updateSelected,
 } from "./features/versionsSlice";
 import versions from "./data.json";
 import * as Styled from "./App.styled";
 import VersionImage from "./components/VersionImage";
+import VersionsToolbar from "./components/VersionsToolbar";
 
 function App() {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.versions.isOpen);
+  const selected = useSelector((state) => state.versions.selected);
 
   const handleOpenVersion = (id) => {
     dispatch(openVersionsSelector(id));
+  };
+
+  const handleVersionChange = (id) => {
+    dispatch(updateSelected(id));
   };
 
   return (
@@ -32,11 +39,17 @@ function App() {
       </Styled.Versions>
       <Dialog
         isOpen={isOpen}
-        header="Versions"
+        header={
+          <VersionsToolbar
+            versions={versions}
+            selected={selected}
+            onChange={handleVersionChange}
+          />
+        }
         onClose={() => dispatch(closeVersionsSelector())}
         size="full"
       >
-        <VersionImage></VersionImage>
+        <VersionImage id={selected} />
       </Dialog>
     </>
   );

@@ -9,9 +9,9 @@ export const versionsSlice = createSlice({
   name: "versions",
   initialState,
   reducers: {
-    openVersionsSelector: (state, payload) => {
+    openVersionsSelector: (state, action) => {
       state.isOpen = true;
-      state.selected = payload;
+      state.selected = action.payload;
     },
     closeVersionsSelector: (state) => {
       state.isOpen = false;
