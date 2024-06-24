@@ -8,13 +8,17 @@ export const versionsSlice = createSlice({
   name: "versions",
   initialState,
   reducers: {
-    toggleVersionsOpen: (state, action) => {
-      // open/close the versions selector
+    openVersionsSelector: (state) => {
+      state.isOpen = true;
+    },
+    closeVersionsSelector: (state) => {
+      state.isOpen = false;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { openVersionsSelector } = versionsSlice.actions;
+export const { openVersionsSelector, closeVersionsSelector } =
+  versionsSlice.actions;
 
 export default versionsSlice.reducer;
