@@ -10,6 +10,7 @@ import {
 } from "./features/versionsSlice";
 import VersionImage from "./components/VersionImage";
 import VersionsToolbar from "./components/VersionsToolbar";
+import { useEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,9 +21,32 @@ function App() {
     dispatch(openVersionsSelector(id));
   };
 
+  const handleCloseVersion = () => {
+    dispatch(closeVersionsSelector());
+  };
+
   const handleVersionChange = (id) => {
     dispatch(updateSelected(id));
   };
+
+  // open version using key o
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "o") {
+        if (isOpen) {
+          handleCloseVersion();
+        }
+        // open version selector
+        else dispatch(openVersionsSelector(selected));
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [dispatch, selected, isOpen]);
 
   return (
     <>
@@ -46,7 +70,7 @@ function App() {
             onChange={handleVersionChange}
           />
         }
-        onClose={() => dispatch(closeVersionsSelector())}
+        onClose={handleCloseVersion}
         size="full"
       >
         <VersionImage id={selected} />

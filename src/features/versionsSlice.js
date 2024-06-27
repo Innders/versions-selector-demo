@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
-  selected: null,
+  selected: 1,
 };
 
 export const versionsSlice = createSlice({
